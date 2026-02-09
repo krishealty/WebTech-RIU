@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Professional Form Validation</title>
+<style>
+    /* ---------- BODY & CENTERING ---------- */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background: #e0eafc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* ---------- CARD ---------- */
+    .form-container {
+        background: #fff;
+        padding: 30px;
+        width: 400px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        transition: 0.3s;
+    }
+
+    .form-container:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #333;
+        letter-spacing: 1px;
+    }
+
+    /* ---------- INPUTS ---------- */
+    input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+        transition: 0.3s;
+    }
+
+    input:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0,123,255,0.5);
+        outline: none;
+    }
+
+    /* ---------- ERROR / SUCCESS MESSAGES ---------- */
+    .feedback {
+        font-size: 13px;
+        margin-top: -5px;
+        margin-bottom: 8px;
+    }
+
+    .error {
+        color: #e74c3c;
+    }
+
+    .success {
+        color: #2ecc71;
+    }
+
+    /* ---------- BUTTON ---------- */
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        background: #007bff;
+        color: white;
+        transition: 0.3s;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background: #0056b3;
+        transform: scale(1.02);
+    }
+
+    /* ---------- OUTPUT ---------- */
+    #output {
+        margin-top: 20px;
+        font-size: 14px;
+        text-align: center;
+        min-height: 30px;
+        color: #333;
+    }
+</style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Sign Up Form</h2>
+    <form id="signupForm" onsubmit="return validateForm()">
+        <input type="text" id="username" placeholder="Enter username" oninput="checkUsername()">
+        <div id="usernameFeedback" class="feedback"></div>
+
+        <input type="email" id="email" placeholder="Enter email" oninput="checkEmail()">
+        <div id="emailFeedback" class="feedback"></div>
+
+        <input type="password" id="password" placeholder="Enter password" oninput="checkPassword()">
+        <div id="passwordFeedback" class="feedback"></div>
+
+        <button type="submit">Submit</button>
+    </form>
+    <div id="output"></div>
+</div>
+
+<script>
+    // --------- LIVE INPUT FEEDBACK ---------
+    function checkUsername() {
+        const username = document.getElementById('username').value.trim();
+        const feedback = document.getElementById('usernameFeedback');
+        if(username.length === 0){
+            feedback.textContent = '';
+        } else if(username.length < 3){
+            feedback.textContent = "Username too short!";
+            feedback.className = "feedback error";
+        } else {
+            feedback.textContent = "Looks good!";
+            feedback.className = "feedback success";
+        }
+    }
+
+    function checkEmail() {
+        const email = document.getElementById('email').value.trim();
+        const feedback = document.getElementById('emailFeedback');
+        if(email.length === 0){
+            feedback.textContent = '';
+        } else if(!email.includes("@") || !email.includes(".")){
+            feedback.textContent = "Invalid email format!";
+            feedback.className = "feedback error";
+        } else {
+            feedback.textContent = "Valid email!";
+            feedback.className = "feedback success";
+        }
+    }
+
+    function checkPassword() {
+        const password = document.getElementById('password').value.trim();
+        const feedback = document.getElementById('passwordFeedback');
+        if(password.length === 0){
+            feedback.textContent = '';
+        } else if(password.length < 6){
+            feedback.textContent = "Password too short!";
+            feedback.className = "feedback error";
+        } else {
+            feedback.textContent = "Strong password!";
+            feedback.className = "feedback success";
+        }
+    }
+
+    // --------- ONSUBMIT VALIDATION ---------
+    function validateForm() {
+        const username = document.getElementById('username').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        if(username === "" || username.length < 3){
+            alert("❌ Username is required and must be at least 3 characters!");
+            return false;
+        }
+
+        if(email === "" || !email.includes("@") || !email.includes(".")){
+            alert("❌ Please enter a valid email!");
+            return false;
+        }
+
+        if(password === "" || password.length < 6){
+            alert("❌ Password must be at least 6 characters!");
+            return false;
+        }
+
+        alert("✔ Form submitted successfully!");
+        document.getElementById('output').textContent = `Welcome, ${username}!`;
+        return false; // Prevent actual submission for demo
+    }
+</script>
+
+</body>
+</html>

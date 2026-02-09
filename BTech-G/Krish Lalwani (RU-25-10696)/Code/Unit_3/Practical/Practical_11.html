@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Modern Arithmetic Calculator</title>
+<style>
+    /* ---------- BODY ---------- */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #89f7fe, #66a6ff);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* ---------- CARD ---------- */
+    .calculator {
+        background: rgba(255,255,255,0.95);
+        padding: 30px 25px;
+        width: 360px;
+        border-radius: 15px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        transition: 0.3s;
+    }
+
+    .calculator:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #333;
+        letter-spacing: 1px;
+    }
+
+    /* ---------- INPUTS ---------- */
+    input[type="number"] {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+        transition: 0.3s;
+    }
+
+    input[type="number"]:focus {
+        border-color: #66a6ff;
+        box-shadow: 0 0 5px rgba(102,166,255,0.4);
+        outline: none;
+    }
+
+    /* ---------- BUTTONS ---------- */
+    .btn {
+        width: 48%;
+        padding: 12px;
+        margin: 5px 1%;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        cursor: pointer;
+        color: #fff;
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: linear-gradient(135deg, #2575fc, #6a11cb);
+        transform: scale(1.05);
+    }
+
+    /* ---------- OUTPUT ---------- */
+    #output {
+        margin-top: 20px;
+        padding: 12px;
+        background: #f1f1f1;
+        border-radius: 8px;
+        font-size: 16px;
+        color: #333;
+        text-align: center;
+        min-height: 45px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    #output.show {
+        animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(-5px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+    <h2>Arithmetic Calculator</h2>
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number">
+
+    <div>
+        <button class="btn" onclick="calculate('add')">Add +</button>
+        <button class="btn" onclick="calculate('subtract')">Subtract −</button>
+    </div>
+    <div>
+        <button class="btn" onclick="calculate('multiply')">Multiply ×</button>
+        <button class="btn" onclick="calculate('divide')">Divide ÷</button>
+    </div>
+
+    <div id="output">Result will appear here</div>
+</div>
+
+<script>
+    function calculate(operation) {
+        const num1 = parseFloat(document.getElementById('num1').value);
+        const num2 = parseFloat(document.getElementById('num2').value);
+        const output = document.getElementById('output');
+
+        if (isNaN(num1) || isNaN(num2)) {
+            alert("❌ Please enter both numbers!");
+            return;
+        }
+
+        let result;
+
+        switch(operation) {
+            case 'add':
+                result = num1 + num2;
+                break;
+            case 'subtract':
+                result = num1 - num2;
+                break;
+            case 'multiply':
+                result = num1 * num2;
+                break;
+            case 'divide':
+                if(num2 === 0){
+                    alert("❌ Division by zero is not allowed!");
+                    return;
+                }
+                result = num1 / num2;
+                break;
+        }
+
+        output.textContent = `Result: ${result}`;
+        output.classList.remove('show');
+        void output.offsetWidth; // Trigger reflow
+        output.classList.add('show');
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Functions & Scope </title>
+
+    <style>
+        body {
+            font-family: Poppins, Arial;
+            background: linear-gradient(120deg, #84fab0, #8fd3f4);
+            padding: 30px;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            width: 420px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 7px 0;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 8px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+            transform: scale(1.03);
+        }
+
+        #output {
+            margin-top: 20px;
+            background: #f3f3f3;
+            padding: 15px;
+            border-radius: 8px;
+            min-height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>JS Functions & Scope </h2>
+
+    <label>Enter a Number:</label>
+    <input type="number" id="userNum" placeholder="e.g. 10">
+
+    <label>Enter another Number:</label>
+    <input type="number" id="userNum2" placeholder="e.g. 20">
+
+    <button onclick="showGreeting()">Show Greeting</button>
+    <button onclick="addNumbers()">Add User Numbers</button>
+    <button onclick="showScopeDemo()">Show var, let & const Scope</button>
+
+    <div id="output">Output will appear here...</div>
+</div>
+
+
+<script>
+
+// -----------------------------------------------------
+// 1️⃣ USER-DEFINED FUNCTION (GREETING)
+// -----------------------------------------------------
+function showGreeting() {
+    function greet(name) {
+        return "Hello, " + name + "! Welcome to JavaScript.";
+    }
+
+    let name = "User";
+    document.getElementById("output").innerHTML = greet(name);
+}
+
+
+function addNumbers() {
+
+    let n1 = document.getElementById("userNum").value;
+    let n2 = document.getElementById("userNum2").value;
+
+    if (n1 === "" || n2 === "") {
+        document.getElementById("output").innerHTML = "❌ Please enter both numbers.";
+        return;
+    }
+
+    function add(a, b) {
+        return a + b;
+    }
+
+    let result = add(parseFloat(n1), parseFloat(n2));
+
+    document.getElementById("output").innerHTML =
+        "✔ Sum: " + result ;
+}
+
+
+function showScopeDemo() {
+
+    var a = 10;     // function-scoped
+    let b = 20;     // block-scoped
+    const c = 30;   // block-scoped constant
+
+    let text = "<b>🔍 Scope Demonstration:</b><br><br>";
+
+    text += "<b>Outside Block (Before Block Runs):</b><br>";
+    text += "var a = " + a + "<br>";
+    text += "let b = " + b + "<br>";
+    text += "const c = " + c + "<br><br>";
+
+    // Block to show scope difference
+    {
+        var a = 100;          // globally overwrites var a
+        let b_inner = 200;    // new block variable
+        const c_inner = 300;  // new block constant
+
+        text += "<b>Inside Block:</b><br>";
+        text += "var a = " + a + " (var changed globally!)<br>";
+        text += "let b = " + b_inner + " (block-only)<br>";
+        text += "const c = " + c_inner + " (block-only)<br><br>";
+    }
+
+    text += "<b>Outside Block (After Block Ends):</b><br>";
+    text += "var a = " + a + " (changed because var is function-scoped)<br>";
+    text += "let b = 20 (unchanged – let is block-scoped)<br>";
+    text += "const c = 30 (unchanged – const is block-scoped)<br>";
+
+    document.getElementById("output").innerHTML = text;
+}
+
+</script>
+
+</body>
+</html>
