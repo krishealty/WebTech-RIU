@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML Form Demonstration</title>
+</head>
+<body>
+
+    <h1>HTML Form Example</h1>
+    <p>This page demonstrates an HTML form containing text inputs, radio buttons, checkboxes, select menus, and submit/reset buttons.</p>
+
+    <hr>
+
+    <form action="#" method="post">
+
+        <!-- Text Inputs -->
+        <h2>Personal Information</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email"><br><br>
+
+        <!-- Radio Buttons -->
+        <h2>Gender</h2>
+        <input type="radio" id="male" name="gender" value="Male">
+        <label for="male">Male</label><br>
+
+        <input type="radio" id="female" name="gender" value="Female">
+        <label for="female">Female</label><br>
+
+        <input type="radio" id="other" name="gender" value="Other">
+        <label for="other">Other</label><br><br>
+
+        <!-- Checkboxes -->
+        <h2>Hobbies</h2>
+        <input type="checkbox" id="reading" name="hobby" value="Reading">
+        <label for="reading">Reading</label><br>
+
+        <input type="checkbox" id="traveling" name="hobby" value="Traveling">
+        <label for="traveling">Traveling</label><br>
+
+        <input type="checkbox" id="gaming" name="hobby" value="Gaming">
+        <label for="gaming">Gaming</label><br><br>
+
+        <!-- Select Menu -->
+        <h2>Country</h2>
+        <label for="country">Select your country:</label>
+        <select id="country" name="country">
+            <option value="">--Select--</option>
+            <option value="india">India</option>
+            <option value="usa">USA</option>
+            <option value="uk">UK</option>
+            <option value="australia">Australia</option>
+        </select><br><br>
+
+        <!-- Submit / Reset Buttons -->
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+
+    </form>
+
+    <hr>
+
+    <p><strong>Explanation:</strong></p>
+    <ul>
+        <li><b>Text Input:</b> &lt;input type="text"&gt; and &lt;input type="email"&gt; used for user information.</li>
+        <li><b>Radio Buttons:</b> &lt;input type="radio"&gt; allows selection of one option in a group.</li>
+        <li><b>Checkboxes:</b> &lt;input type="checkbox"&gt; allows multiple selections.</li>
+        <li><b>Select Menu:</b> &lt;select&gt; with &lt;option&gt; provides a dropdown menu.</li>
+        <li><b>Submit/Reset:</b> &lt;input type="submit"&gt; sends the form; &lt;input type="reset"&gt; clears all fields.</li>
+    </ul>
+
+</body>
+</html>

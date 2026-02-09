@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Me - Table Layout</title>
+</head>
+<body>
+
+    <h1>About Me: Kunal Kumar</h1>
+    <p>This page demonstrates a table-based layout using merged cells, alignment, and caption while introducing <strong>me</strong>.</p>
+
+    <hr>
+
+    <table border="1" cellspacing="0" cellpadding="8">
+        <caption><strong>Personal Information</strong></caption>
+
+        <tr>
+            <th>Name</th>
+            <th>Education</th>
+            <th>Skills</th>
+            <th>Hobbies</th>
+        </tr>
+
+        <tr>
+            <td rowspan="2" align="center">Kunal Kumar</td>
+            <td>B.Tech (AI & ML)</td>
+            <td>HTML, Python</td>
+            <td align="center">Coding</td>
+        </tr>
+
+        <tr>
+            <td>Projects</td>
+            <td>Machine Learning Basics</td>
+            <td align="center">Reading</td>
+        </tr>
+
+        <tr>
+            <td>Additional Info</td>
+            <td colspan="2" align="center">Quick Overview</td>
+            <td align="center">Gaming</td>
+        </tr>
+
+        <tr>
+            <td>Contact</td>
+            <td>Email: kunalhjp49@gmail.com</td>
+            <td>Phone: +91 9955008447</td>
+            <td align="center">Exploring AI</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <p><strong>Explanation:</strong></p>
+    <ul>
+        <li><b>Caption:</b> The &lt;caption&gt; tag gives a title to the table.</li>
+        <li><b>Merged Cells:</b> <code>rowspan</code> merges rows; <code>colspan</code> merges columns.</li>
+        <li><b>Alignment:</b> <code>align</code> for horizontal alignment.</li>
+        <li>All data above is related to <strong>Kunal Kumar</strong>.</li>
+    </ul>
+
+</body>
+</html>
