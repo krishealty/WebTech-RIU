@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inline, Internal, and External CSS Example</title>
+
+  <!-- Linking External CSS -->
+  <link rel="stylesheet" href="Practical_6.css">
+
+  <!-- Internal CSS -->
+  <style>
+    /* Internal CSS */
+    h2 {
+      color: #27ae60;
+      text-decoration: underline;
+    }
+
+    .internal-box {
+      border: 2px solid #27ae60;
+      padding: 10px;
+      background-color: #eafaf1;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Student Info Section -->
+  <div class="student-info">
+    <h3>Student Information</h3>
+    <p><strong>Name:</strong> Kunal Kumar</p>
+    <p><strong>Class:</strong> B.Tech - 1st Year</p>
+    <p><strong>Roll No:</strong> 43</p>
+    <p><strong>Subject:</strong> Web Design (HTML & CSS)</p>
+    <p><strong>Topic:</strong> Apply Inline, Internal, and External CSS Styles to HTML Elements</p>
+  </div>
+
+  <!-- Heading styled with External CSS -->
+  <h1>Welcome to CSS Styling Example</h1>
+
+  <!-- Internal CSS Example -->
+  <h2>1. Internal CSS Example</h2>
+  <div class="internal-box">
+    <p>This box and text are styled using <b>Internal CSS</b> defined inside the &lt;style&gt; tag within the HTML file.</p>
+  </div>
+
+  <!-- Inline CSS Example -->
+  <h2>2. Inline CSS Example</h2>
+  <p style="color: #c0392b; font-size: 18px; background-color: #f9ebea; padding: 10px; border-radius: 8px;">
+    This paragraph is styled using <b>Inline CSS</b>. The style attribute is written directly inside the HTML tag.
+  </p>
+
+  <!-- External CSS Example -->
+  <h2>3. External CSS Example</h2>
+  <p>This text and page background are styled with <b>External CSS</b> (from style.css file).</p>
+
+</body>
+</html>

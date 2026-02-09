@@ -1,0 +1,97 @@
+/* style.css - Layout Using div and span Elements */
+
+/* Reset & Global Styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  color: #2c3e50;
+  line-height: 1.6;
+  padding: 1rem;
+}
+
+/* Header Section */
+.header {
+  background-color: #2e86de;
+  color: white;
+  text-align: center;
+  padding: 1.5rem 0;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+}
+
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: #d6eaf8;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.navbar div {
+  padding: 0.75rem 1.5rem;
+  border-right: 1px solid #aed6f1;
+}
+
+.navbar div:last-child {
+  border-right: none;
+}
+
+.navbar div:hover {
+  background-color: #aed6f1;
+  cursor: pointer;
+}
+
+/* Main Layout */
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+/* Left and Right Section using divs */
+.sidebar, .content {
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  padding: 1rem;
+  flex: 1;
+  min-width: 250px;
+}
+
+/* Sidebar */
+.sidebar {
+  flex-basis: 25%;
+  background-color: #eaf2f8;
+}
+
+/* Content */
+.content {
+  flex-basis: 70%;
+}
+
+/* Span styling example inside paragraphs */
+.highlight {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+/* Footer */
+.footer {
+  background-color: #1b4f72;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+}

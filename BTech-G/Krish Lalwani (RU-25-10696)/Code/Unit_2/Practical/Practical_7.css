@@ -1,0 +1,65 @@
+/* style.css - Advanced CSS Example */
+
+/* Page Body Styling */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+  background-color: #f4f7fb;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Section */
+header {
+  background-color: #2e86de;
+  color: white;
+  text-align: center;
+  padding: 30px 0;
+  border-bottom: 5px solid #1b4f72;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Main Content Area */
+.main-content {
+  width: 80%;
+  margin: 30px auto;
+  background-color: #ffffff;
+  border: 2px solid #2e86de;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Demonstrating Box Model */
+.box {
+  background-color: #d6eaf8;
+  border: 3px solid #3498db;
+  padding: 20px;   /* inside spacing */
+  margin: 20px 0;  /* space between elements */
+  border-radius: 10px;
+}
+
+/* Footer Section */
+footer {
+  text-align: center;
+  background-color: #1b4f72;
+  color: #f4f7fb;
+  padding: 15px;
+  margin-top: 30px;
+  border-top: 5px solid #2e86de;
+}
+
+/* Styling student info */
+.student-info {
+  background-color: #eaf2f8;
+  border-left: 5px solid #2e86de;
+  padding: 15px;
+  margin: 20px auto;
+  border-radius: 10px;
+  width: 60%;
+}
+.student-info p {
+  margin: 5px 0;
+  color: #2c3e50;
+  font-size: 15px;
+}

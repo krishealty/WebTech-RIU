@@ -1,0 +1,78 @@
+/* style.css - Demonstration of CSS Selectors */
+
+/* 1️⃣ Universal Selector - applies to all elements */
+* {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2️⃣ Group Selector - styles multiple elements together */
+h1, h2, p {
+  color: #2c3e50;
+}
+
+/* 3️⃣ Class Selector - applied using .classname */
+.highlight {
+  background-color: #f9e79f;
+  border-left: 5px solid #f1c40f;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+/* 4️⃣ ID Selector - applied to unique elements using #idname */
+#main-heading {
+  color: #2e86de;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 20px 0;
+  border-bottom: 3px solid #2e86de;
+  padding-bottom: 10px;
+}
+
+/* 5️⃣ Descendant Selector - targets elements inside a specific parent */
+div.box p {
+  color: #34495e;
+  background-color: #d6eaf8;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Additional styling for structure */
+body {
+  background-color: #f4f7fb;
+  margin: 20px;
+}
+
+.box {
+  border: 2px solid #5dade2;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 20px 0;
+  background-color: #ffffff;
+}
+
+footer {
+  text-align: center;
+  background-color: #e7ebee;
+  color: #f4f7fb;
+  padding: 10px;
+  margin-top: 30px;
+  border-top: 4px solid #2e86de;
+}
+
+/* Student Information Card */
+.student-info {
+  background-color: #eaf2f8;
+  border-left: 5px solid #2e86de;
+  padding: 15px;
+  border-radius: 10px;
+  width: 60%;
+  margin: 10px auto 25px auto;
+}
+.student-info p {
+  color: #2c3e50;
+  margin: 4px 0;
+}
