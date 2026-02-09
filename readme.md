@@ -1,4 +1,6 @@
-# 🌐 Krish Lalwani – WebTech Projects
+<img src="license/WEBTECH.gif">
+
+# 🌐 Krish Lalwani (RU-25-10696)
 
 <p align="center">
   <img src="https://img.shields.io/badge/Web%20Technology-Projects-blueviolet?style=for-the-badge">
