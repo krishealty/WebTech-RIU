@@ -1,0 +1,162 @@
+<!-- © Source Code protected for Krish Lalwani under MIT LICENSE -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Profile Card for Krish Lalwani</title>
+<style>
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Page gradient background */
+  }
+
+  /* Profile Card */
+  .profile-card {
+    position: relative;
+    width: 350px;
+    background: #ffffff; /* Card background distinct from page */
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .profile-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  }
+
+  /* Header inside card (optional gradient) */
+  .profile-card .card-header {
+    height: 120px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Card header gradient */
+    position: relative;
+  }
+
+  /* Avatar */
+  .profile-card .avatar {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .profile-card:hover .avatar {
+    transform: translateX(-50%) scale(1.1);
+  }
+
+  /* Card content */
+  .profile-content {
+    padding: 80px 20px 30px;
+  }
+
+  .profile-content h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 5px;
+  }
+
+  .profile-content p {
+    font-size: 0.95rem;
+    color: #777;
+    margin-bottom: 20px;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    padding: 10px 25px;
+    margin: 5px;
+    border-radius: 25px;
+    border: 2px solid #ff7e5f;
+    color: #ff7e5f;
+    background: transparent;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    background: #ff7e5f;
+    color: #fff;
+    transform: translateY(-3px);
+  }
+
+  .btn:active {
+    transform: translateY(0);
+  }
+
+  /* Social Links */
+  .social-links {
+    margin-top: 15px;
+  }
+
+  .social-links a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background: #eee;
+    color: #ff7e5f;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .social-links a:hover {
+    background: #ff7e5f;
+    color: #fff;
+    transform: scale(1.2);
+  }
+
+  .social-links a:focus {
+    outline: 2px solid #ff7e5f;
+    outline-offset: 3px;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="profile-card">
+  <div class="card-header"></div>
+  <img src="kunal.jpg" alt="Profile Avatar" class="avatar">
+  <div class="profile-content">
+    <h2>Krish Lalwani</h2>
+    <p>Aspiring AI & Machine Learning Engineer | Completed Projects in Python, Data Analysis, and ML Models</p>
+    <a href="#" class="btn">Follow</a>
+    <a href="#" class="btn">Message</a>
+    <div class="social-links">
+      <a href="#" title="Instagram">I</a>
+      <a href="#" title="LinkedIn">L</a>
+      <a href="#" title="GitHub">G</a>
+      <a href="#" title="WhatsApp">W</a>
+    </div>
+  </div>
+</div>
+
+</body>
+  </html>
