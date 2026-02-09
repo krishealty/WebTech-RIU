@@ -4,7 +4,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Web%20Technology-Projects-blueviolet?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Author-Krish%20Lalwani-red?style=for-the-badge">
+  <a href="https://krishealty.me"> <img src="https://img.shields.io/badge/Author-Krish%20Lalwani-red?style=for-the-badge"> </a>
   <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge">
 </p>
 
