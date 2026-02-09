@@ -25,16 +25,16 @@ Each unit is organized separately for **easy navigation, clean structure, and fa
 ## 📚 Units
 
 <p align="center">
-  <a href="./Unit-1">
+  <a href="https://github.com/krishealty/WebTech-RIU/tree/main/BTech-G/Krish%20Lalwani%20(RU-25-10696)/Code/Unit_1">
     <img src="https://img.shields.io/badge/Unit%201-CLICK%20ME-orange?style=for-the-badge">
   </a>
-  <a href="./Unit-2">
+  <a href="https://github.com/krishealty/WebTech-RIU/tree/main/BTech-G/Krish%20Lalwani%20(RU-25-10696)/Code/Unit_2">
     <img src="https://img.shields.io/badge/Unit%202-CLICK%20ME-blue?style=for-the-badge">
   </a>
-  <a href="./Unit-3">
+  <a href="https://github.com/kunalkumar-9955/WebTech-Practical/tree/main/B.Tech_G/Kunal(RU-25-10725)/Code/Unit_3/Practical">
     <img src="https://img.shields.io/badge/Unit%203-CLICK%20ME-red?style=for-the-badge">
   </a>
-  <a href="./Unit-4">
+  <a href="https://github.com/kunalkumar-9955/WebTech-Practical/tree/main/B.Tech_G/Kunal(RU-25-10725)/Code/Unit_4/Practical">
     <img src="https://img.shields.io/badge/Unit%204-CLICK%20ME-green?style=for-the-badge">
   </a>
 </p>
