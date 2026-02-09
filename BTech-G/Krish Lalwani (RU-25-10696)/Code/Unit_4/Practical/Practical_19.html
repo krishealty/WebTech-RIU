@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mini Figma Canvas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#020617; --glass:rgba(255,255,255,.06);
+  --border:rgba(255,255,255,.15); --accent:#38bdf8; --text:#e5e7eb;
+}
+*{box-sizing:border-box;font-family:Inter,system-ui}
+body{margin:0;height:100vh;background:radial-gradient(circle at 20% 20%,#38bdf833,transparent 40%),#020617;
+display:flex;align-items:center;justify-content:center;color:var(--text);}
+.app{width:96%;height:94vh;border-radius:20px;border:1px solid var(--border);
+backdrop-filter:blur(14px);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+display:grid;grid-template-rows:56px 1fr;}
+.header{display:flex;justify-content:space-between;align-items:center;padding:0 18px;border-bottom:1px solid var(--border);}
+.header .actions{display:flex;gap:8px;}
+.header button{padding:8px 14px;border-radius:10px;border:1px solid var(--border);
+background:var(--glass);color:var(--text);cursor:pointer;}
+.main{display:grid;grid-template-columns:220px 1fr 220px;}
+.toolbar{padding:14px;border-right:1px solid var(--border);}
+.toolbar h4{font-size:.75rem;opacity:.7;margin-bottom:8px;}
+.tool-btn{width:100%;padding:8px;margin-bottom:6px;border-radius:10px;border:1px solid var(--border);
+background:var(--glass);color:var(--text);cursor:pointer;}
+.tool-btn.active{background:linear-gradient(135deg,#38bdf8,#22c55e);color:#020617;}
+.canvas-wrap{display:flex;align-items:center;justify-content:center;}
+canvas{background:#020617;border-radius:14px;cursor:crosshair;}
+.right{padding:14px;border-left:1px solid var(--border);}
+label{font-size:.8rem;opacity:.7;}
+.eraser{position:fixed;border:2px solid var(--accent);border-radius:50%;
+pointer-events:none;display:none;transform:translate(-50%,-50%);z-index:9999;}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <div class="header">
+    <div>Mini Figma Canvas</div>
+    <div class="actions">
+      <button id="undo">Undo</button>
+      <button id="redo">Redo</button>
+      <button id="gridBtn">Grid</button>
+      <button id="clear">Clear</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="toolbar">
+      <h4>TOOLS</h4>
+      <button class="tool-btn active" data-tool="rect">Rectangle</button>
+      <button class="tool-btn" data-tool="ellipse">Ellipse</button>
+      <button class="tool-btn" data-tool="line">Line</button>
+      <button class="tool-btn" data-tool="pen">Pen</button>
+      <button class="tool-btn" data-tool="eraser">Eraser</button>
+    </div>
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+let tool = 'rect', drawing = false, startX = 0, startY = 0;
+let shapes = [], preview = null, pen = [];
+let undoStack = [], redoStack = [];
+let gridOn = false;
+const color = document.getElementById('color');
+const size = document.getElementById('size');
+const eraserCursor = document.getElementById('eraserCursor');
+
+/* TOOL SELECT */
+document.querySelectorAll('.tool-btn').forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    tool = btn.dataset.tool;
+  };
+});
+
+/* DRAW / REDRAW */
+function redraw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  if(gridOn) drawGrid();
+
+  shapes.forEach(s => {
+    if(s.t === 'eraser'){
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.lineWidth = s.w;
+      ctx.beginPath();
+      ctx.moveTo(s.p[0].x, s.p[0].y);
+      s.p.forEach(pt => ctx.lineTo(pt.x, pt.y));
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.stroke();
+      ctx.restore();
+      return;
+    }
+
+    ctx.strokeStyle = s.c || color.value;
+    ctx.lineWidth = s.w || 2;
+    if(s.t === 'rect') ctx.strokeRect(s.x, s.y, s.wi, s.hi);
+    if(s.t === 'ellipse'){ ctx.beginPath(); ctx.ellipse(s.x, s.y, s.rx, s.ry, 0, 0, Math.PI*2); ctx.stroke(); }
+    if(s.t === 'line'){ ctx.beginPath(); ctx.moveTo(s.x, s.y); ctx.lineTo(s.x2, s.y2); ctx.stroke(); }
+    if(s.t === 'pen'){ ctx.beginPath(); ctx.moveTo(s.p[0].x, s.p[0].y); s.p.forEach(pt => ctx.lineTo(pt.x, pt.y)); ctx.lineCap='round'; ctx.lineJoin='round'; ctx.stroke(); }
+  });
+
+  if(preview){
+    ctx.setLineDash([6,4]); ctx.strokeStyle = color.value; ctx.lineWidth = size.value;
+    if(preview.t === 'rect') ctx.strokeRect(preview.x, preview.y, preview.wi, preview.hi);
+    if(preview.t === 'ellipse'){ ctx.beginPath(); ctx.ellipse(preview.x, preview.y, preview.rx, preview.ry, 0, 0, Math.PI*2); ctx.stroke(); }
+    if(preview.t === 'line'){ ctx.beginPath(); ctx.moveTo(preview.x, preview.y); ctx.lineTo(preview.x2, preview.y2); ctx.stroke(); }
+    if(preview.t === 'pen'){ ctx.beginPath(); ctx.moveTo(preview.p[0].x, preview.p[0].y); preview.p.forEach(pt => ctx.lineTo(pt.x, pt.y)); ctx.stroke(); }
+    ctx.setLineDash([]);
+  }
+}
+
+function drawGrid(){
+  const gap = 20;
+  ctx.save();
+  ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+  ctx.lineWidth = 1;
+  for(let x = 0; x < canvas.width; x += gap){ ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,canvas.height); ctx.stroke(); }
+  for(let y = 0; y < canvas.height; y += gap){ ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(canvas.width,y); ctx.stroke(); }
+  ctx.restore();
+}
+
+/* HISTORY */
+function pushState(){ undoStack.push(JSON.parse(JSON.stringify(shapes))); if(undoStack.length>60) undoStack.shift(); }
+function doUndo(){ if(undoStack.length===0) return; redoStack.push(JSON.parse(JSON.stringify(shapes))); shapes = undoStack.pop(); redraw(); }
+function doRedo(){ if(redoStack.length===0) return; undoStack.push(JSON.parse(JSON.stringify(shapes))); shapes = redoStack.pop(); redraw(); }
+function doClear(){ pushState(); shapes = []; redoStack = []; redraw(); }
+
+/* MOUSE EVENTS */
+canvas.onmousedown = e => {
+  drawing = true; startX = e.offsetX; startY = e.offsetY;
+  // save state so this action can be undone
+  pushState(); redoStack = [];
+  if(tool === 'pen' || tool === 'eraser') pen = [{x:startX, y:startY}];
+};
+
+canvas.onmousemove = e => {
+  const x = e.offsetX, y = e.offsetY;
+
+  // eraser cursor
+  if(tool === 'eraser'){
+    eraserCursor.style.display = 'block';
+    const s = Number(size.value);
+    eraserCursor.style.width = (s*2) + 'px'; eraserCursor.style.height = (s*2) + 'px';
+    eraserCursor.style.left = (e.clientX) + 'px'; eraserCursor.style.top = (e.clientY) + 'px';
+  } else eraserCursor.style.display = 'none';
+
+  if(!drawing) return;
+
+  if(tool === 'rect') preview = {t:'rect', x:startX, y:startY, wi: x-startX, hi: y-startY};
+  if(tool === 'ellipse') preview = {t:'ellipse', x:(startX+x)/2, y:(startY+y)/2, rx:Math.abs(x-startX)/2, ry:Math.abs(y-startY)/2};
+  if(tool === 'line') preview = {t:'line', x:startX, y:startY, x2:x, y2:y};
+  if(tool === 'pen'){ pen.push({x,y}); preview = {t:'pen', p:[...pen]}; }
+  if(tool === 'eraser'){ pen.push({x,y}); preview = null; /* don't show preview for eraser */ }
+
+  redraw();
+};
+
+canvas.onmouseup = e => {
+  drawing = false;
+  const x = e.offsetX, y = e.offsetY;
+  if(tool === 'rect') shapes.push({t:'rect', x:startX, y:startY, wi:x-startX, hi:y-startY, c:color.value, w:Number(size.value)});
+  if(tool === 'ellipse') shapes.push({t:'ellipse', x:(startX+x)/2, y:(startY+y)/2, rx:Math.abs(x-startX)/2, ry:Math.abs(y-startY)/2, c:color.value, w:Number(size.value)});
+  if(tool === 'line') shapes.push({t:'line', x:startX, y:startY, x2:x, y2:y, c:color.value, w:Number(size.value)});
+  if(tool === 'pen' && pen.length>1) shapes.push({t:'pen', p:[...pen], c:color.value, w:Number(size.value)});
+  if(tool === 'eraser' && pen.length>0) shapes.push({t:'eraser', p:[...pen], w:Number(size.value)});
+  preview = null; pen = [];
+  redraw();
+};
+
+/* Header buttons */
+document.getElementById('undo').addEventListener('click', doUndo);
+document.getElementById('redo').addEventListener('click', doRedo);
+document.getElementById('clear').addEventListener('click', doClear);
+document.getElementById('gridBtn').addEventListener('click', ()=>{ gridOn = !gridOn; document.getElementById('gridBtn').classList.toggle('active', gridOn); redraw(); });
+
+// initial draw
+redraw();
+</script>
+</body>
+</html>

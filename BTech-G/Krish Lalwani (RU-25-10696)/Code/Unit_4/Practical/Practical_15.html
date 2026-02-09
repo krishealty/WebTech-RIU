@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI/UX DOM Manipulation Demo</title>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #ffffff);
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: 0.3s ease;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 28px;
+            color: #333;
+            transition: 0.3s ease;
+        }
+
+        p {
+            font-size: 17px;
+            color: #555;
+            line-height: 1.6;
+            transition: 0.3s ease;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #007bff;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background: #0056d2;
+            transform: translateY(-2px);
+        }
+
+        .success-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e6ffe9;
+            border-left: 5px solid #28a745;
+            border-radius: 8px;
+            color: #155724;
+            display: none;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" id="cardBox">
+
+        <h2 id="mainHeading">Welcome to DOM Manipulation</h2>
+
+        <p class="infoText">
+            This interactive UI demonstrates how DOM elements can be updated using JavaScript.
+            Click the button to see the transformation.
+        </p>
+
+        <button id="updateBtn">Update Content</button>
+
+        <div id="successMessage" class="success-box">
+            Content updated using <b>getElementById()</b>, <b>querySelector()</b>, and <b>innerHTML</b>.
+        </div>
+
+    </div>
+
+
+    <script>
+        // ─────────── DOM SELECTORS ───────────
+        const heading = document.getElementById("mainHeading");          // getElementById()
+        const paragraph = document.querySelector(".infoText");           // querySelector()
+        const updateBtn = document.getElementById("updateBtn");
+        const successBox = document.getElementById("successMessage");
+        const card = document.getElementById("cardBox");
+
+
+        // ─────────── DOM MANIPULATION ───────────
+        updateBtn.addEventListener("click", () => {
+
+            // Change Heading
+            heading.innerHTML = "Content Updated Successfully!";
+            heading.style.color = "#0066cc";
+
+            // Change Paragraph
+            paragraph.innerHTML = `
+                <b>DOM Manipulation Applied!</b><br>
+                This updated content is generated using:
+                <ul>
+                    <li>getElementById()</li>
+                    <li>querySelector()</li>
+                    <li>innerHTML</li>
+                </ul>
+                Notice how the UI updates smoothly with animations and transitions.
+            `;
+            paragraph.style.color = "#222";
+
+            // Change Button
+            updateBtn.innerHTML = "Updated ✔";
+            updateBtn.style.background = "#28a745";
+
+            // Show success box
+            successBox.style.display = "block";
+
+            // Add a soft glow effect
+            card.style.boxShadow = "0 12px 32px rgba(0, 0, 0, 0.15)";
+        });
+    </script>
+
+</body>
+</html>
