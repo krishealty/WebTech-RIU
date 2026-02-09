@@ -31,16 +31,21 @@ Each unit is organized separately for **easy navigation, clean structure, and fa
   <a href="https://github.com/krishealty/WebTech-RIU/tree/main/BTech-G/Krish%20Lalwani%20(RU-25-10696)/Code/Unit_2">
     <img src="https://img.shields.io/badge/Unit%202-CLICK%20ME-blue?style=for-the-badge">
   </a>
-  <a href="https://github.com/kunalkumar-9955/WebTech-Practical/tree/main/B.Tech_G/Kunal(RU-25-10725)/Code/Unit_3/Practical">
+  <a href="https://github.com/krishealty/WebTech-RIU/tree/main/BTech-G/Krish%20Lalwani%20(RU-25-10696)/Code/Unit_3">
     <img src="https://img.shields.io/badge/Unit%203-CLICK%20ME-red?style=for-the-badge">
   </a>
-  <a href="https://github.com/kunalkumar-9955/WebTech-Practical/tree/main/B.Tech_G/Kunal(RU-25-10725)/Code/Unit_4/Practical">
+  <a href="https://github.com/krishealty/WebTech-RIU/tree/main/BTech-G/Krish%20Lalwani%20(RU-25-10696)/Code/Unit_4">
     <img src="https://img.shields.io/badge/Unit%204-CLICK%20ME-green?style=for-the-badge">
   </a>
 </p>
 
 ---
 
+  <a href="https://github.com/krishealty/WebTech-RIU/tree/main/BTech-G/Krish%20Lalwani%20(RU-25-10696)/Practical">
+    <img src="https://img.shields.io/badge/PRACTICAL-CLICK%20ME-green?style=for-the-badge">
+  </a>
+
+---
 ## 🧠 What You'll Find
 
 - ✅ Well-structured unit-wise folders  
@@ -57,10 +62,3 @@ Each unit is organized separately for **easy navigation, clean structure, and fa
 - **JavaScript**
 - **Basic Web Design Principles**
 
----
-
-## 🚀 How to Use
-
-1. Clone the repository  
-   ```bash
-   git clone https://github.com/your-username/your-repo-name.git
