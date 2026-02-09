@@ -1,0 +1,64 @@
+# 🌐 Krish Lalwani – WebTech Projects
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Web%20Technology-Projects-blueviolet?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Author-Krish%20Lalwani-red?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge">
+</p>
+
+---
+
+## 📌 About This Repository
+
+This repository contains **Web Technology (WebTech) practicals, assignments, and projects** created by **Krish Lalwani**.  
+Each unit is organized separately for **easy navigation, clean structure, and fast access**.
+
+💡 **Focused on:**
+- Clean code 🧼  
+- Proper structure 📁  
+- No lazy or incorrect implementations ❌  
+
+---
+
+## 📚 Units
+
+<p align="center">
+  <a href="./Unit-1">
+    <img src="https://img.shields.io/badge/Unit%201-CLICK%20ME-orange?style=for-the-badge">
+  </a>
+  <a href="./Unit-2">
+    <img src="https://img.shields.io/badge/Unit%202-CLICK%20ME-blue?style=for-the-badge">
+  </a>
+  <a href="./Unit-3">
+    <img src="https://img.shields.io/badge/Unit%203-CLICK%20ME-red?style=for-the-badge">
+  </a>
+  <a href="./Unit-4">
+    <img src="https://img.shields.io/badge/Unit%204-CLICK%20ME-green?style=for-the-badge">
+  </a>
+</p>
+
+---
+
+## 🧠 What You'll Find
+
+- ✅ Well-structured unit-wise folders  
+- ✅ Practical examples & mini projects  
+- ✅ Beginner-friendly but **properly written code**  
+- ✅ Ideal for exams, revision & real understanding  
+
+---
+
+## 🛠️ Tech Stack Used
+
+- **HTML5**
+- **CSS3**
+- **JavaScript**
+- **Basic Web Design Principles**
+
+---
+
+## 🚀 How to Use
+
+1. Clone the repository  
+   ```bash
+   git clone https://github.com/your-username/your-repo-name.git
