@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Show/Hide & Toggle Class Demo</title>
+
+<style>
+    
+    body {
+        font-family: "Inter", sans-serif;
+        background: #f4f4f7;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        text-align: center;
+        background: white;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        width: 360px;
+    }
+
+    button {
+        padding: 12px 20px;
+        border: none;
+        background: #4a6cf7;
+        color: white;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+    button:hover {
+        background: #3b57c5;
+        transform: translateY(-2px);
+    }
+
+    .box {
+        margin-top: 20px;
+        padding: 20px;
+        background: #fafafa;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        opacity: 1;
+        transform: scale(1);
+        transition: all 0.35s ease;
+    }
+
+    .hidden {
+        opacity: 0;
+        transform: scale(0.9);
+        pointer-events: none;
+    }
+
+    .highlight {
+        border-color: #4a6cf7;
+        background: #eef1ff;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Show / Hide & Toggle Class</h2>
+    <button id="toggleBtn">Toggle Element</button>
+
+    <div id="contentBox" class="box hidden">
+        This is a toggleable box.  
+        <br>
+        Click the button to show, hide, and highlight it.
+    </div>
+</div>
+
+<script>
+    const button = document.getElementById("toggleBtn");
+    const box = document.getElementById("contentBox");
+
+    button.addEventListener("click", () => {
+        
+        box.classList.toggle("hidden");
+
+        if (!box.classList.contains("hidden")) {
+            box.classList.add("highlight");
+        } else {
+            box.classList.remove("highlight");
+        }
+    });
+</script>
+
+</body>
+</html>

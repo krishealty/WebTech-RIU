@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Element Manipulation</title>
+
+<style>
+    body {
+        font-family: "Inter", sans-serif;
+        background: #eef1f7;
+        margin: 0;
+        padding: 40px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .app {
+        width: 520px;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 14px;
+        box-shadow: 0 10px 32px rgba(0,0,0,0.12);
+    }
+
+    h2 {
+        margin: 0 0 20px;
+        color: #333;
+        text-align: center;
+    }
+
+    .controls {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    input {
+        flex: 1;
+        padding: 12px;
+        border-radius: 8px;
+        border: 2px solid #d6d9e4;
+        font-size: 15px;
+    }
+
+    button {
+        padding: 12px 20px;
+        background: #4a6cf7;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.25s ease;
+    }
+
+    button:hover {
+        background: #3b56c7;
+        transform: translateY(-2px);
+    }
+
+    .list {
+        margin-top: 10px;
+    }
+
+    .card {
+        background: #f7f8ff;
+        padding: 15px;
+        border: 2px solid #d8dcf0;
+        border-radius: 10px;
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.25s ease;
+    }
+
+    .card span {
+        font-size: 16px;
+    }
+
+    .card:hover {
+        border-color: #4a6cf7;
+        background: #eef2ff;
+    }
+
+    .removeBtn {
+        background: #ff4d4d;
+        padding: 6px 12px;
+        border: none;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+
+    .removeBtn:hover {
+        background: #d63838;
+    }
+</style>
+</head>
+
+<body>
+<div class="app">
+    <h2>Dynamic Elements (Create, Append, Remove, Modify)</h2>
+
+    <!-- Controls -->
+    <div class="controls">
+        <input type="text" id="itemInput" placeholder="Enter item text...">
+        <button id="addBtn">Add Item</button>
+    </div>
+
+    <!-- List Container -->
+    <div id="itemList" class="list"></div>
+</div>
+
+<script>
+    const input = document.getElementById("itemInput");
+    const addBtn = document.getElementById("addBtn");
+    const list = document.getElementById("itemList");
+
+    /* ----------------------------
+       CREATE + APPEND ELEMENT
+    -----------------------------*/
+    addBtn.addEventListener("click", () => {
+        const value = input.value.trim();
+        if (value === "") return;
+
+        // Create card div
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        // Create text span
+        const textSpan = document.createElement("span");
+        textSpan.textContent = value;
+
+        // Modify (double click)
+        textSpan.addEventListener("dblclick", () => {
+            const newText = prompt("Edit item:", textSpan.textContent);
+            if (newText) textSpan.textContent = newText;
+        });
+
+        // Remove button
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "X";
+        removeBtn.classList.add("removeBtn");
+
+        // Remove event
+        removeBtn.addEventListener("click", () => {
+            card.remove(); // REMOVE CHILD NODE
+        });
+
+        // Append child nodes to the card
+        card.appendChild(textSpan);
+        card.appendChild(removeBtn);
+
+        // Append card to list
+        list.appendChild(card);
+
+        input.value = "";
+    });
+</script>
+
+</body>
+</html>

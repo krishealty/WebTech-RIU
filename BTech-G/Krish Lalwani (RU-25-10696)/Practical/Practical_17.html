@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Listener Interaction Demo</title>
+
+<style>
+    body {
+        font-family: "Inter", sans-serif;
+        background: #eef1f7;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .card {
+        width: 420px;
+        background: white;
+        padding: 35px;
+        border-radius: 14px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    button {
+        padding: 12px 24px;
+        margin: 5px;
+        background: #4a6cf7;
+        border: none;
+        color: white;
+        border-radius: 8px;
+        font-size: 15px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.25s ease;
+    }
+
+    button:hover {
+        background: #3d56c5;
+        transform: translateY(-2px);
+    }
+
+    .box {
+        margin-top: 20px;
+        padding: 25px;
+        border-radius: 10px;
+        background: #f8f8ff;
+        border: 2px solid #dcdff3;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .hidden {
+        opacity: 0;
+        transform: scale(0.9);
+        pointer-events: none;
+    }
+
+    .highlight {
+        background: #eef2ff;
+        border-color: #4a6cf7;
+    }
+
+    .key-active {
+        color: #4a6cf7;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>Interactive Event Listeners Demo</h2>
+
+    <button id="toggleBoxBtn">Show / Hide Box</button>
+    <button id="removeHoverBtn">Disable Hover Effect</button>
+
+    <div id="interactiveBox" class="box hidden">
+        Hover over me or press keys!
+    </div>
+</div>
+
+<script>
+    const toggleBtn = document.getElementById("toggleBoxBtn");
+    const removeHoverBtn = document.getElementById("removeHoverBtn");
+    const box = document.getElementById("interactiveBox");
+
+    function handleMouseEnter() {
+        box.classList.add("highlight");
+        box.textContent = "Mouse Entered!";
+    }
+
+    function handleMouseLeave() {
+        box.classList.remove("highlight");
+        box.textContent = "Hover over me or press keys!";
+    }
+
+    box.addEventListener("mouseenter", handleMouseEnter);
+    box.addEventListener("mouseleave", handleMouseLeave);
+
+
+    function handleKeyPress(event) {
+        box.classList.add("key-active");
+        box.textContent = `Key Pressed: "${event.key}"`;
+
+        setTimeout(() => {
+            box.classList.remove("key-active");
+        }, 300);
+    }
+
+    document.addEventListener("keydown", handleKeyPress);
+
+    toggleBtn.addEventListener("click", () => {
+        box.classList.toggle("hidden");
+    });
+
+    removeHoverBtn.addEventListener("click", () => {
+        box.removeEventListener("mouseenter", handleMouseEnter);
+        box.removeEventListener("mouseleave", handleMouseLeave);
+
+        box.textContent = "Hover disabled. Keyboard still works.";
+        box.classList.remove("highlight");
+    });
+</script>
+
+</body>
+</html>

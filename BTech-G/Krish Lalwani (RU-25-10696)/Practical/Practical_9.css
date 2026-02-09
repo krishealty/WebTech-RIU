@@ -1,0 +1,131 @@
+/* style.css - Responsive Web Page Using Media Queries and Mobile-First Design */
+
+/* 🌐 Global (Mobile-First) Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  color: #2c3e50;
+  line-height: 1.6;
+  padding: 1rem;
+}
+
+/* Header Section */
+header {
+  background-color: #2e86de;
+  color: white;
+  text-align: center;
+  padding: 1.5rem 0;
+  border-radius: 0.5rem;
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+/* Navigation Menu */
+nav {
+  display: flex;
+  flex-direction: column;
+  background-color: #d6eaf8;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #2e86de;
+  padding: 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid #aed6f1;
+}
+
+nav a:hover {
+  background-color: #aed6f1;
+}
+
+/* Main Content */
+main {
+  margin-top: 1.5rem;
+}
+
+.article {
+  background-color: white;
+  border: 1px solid #dcdcdc;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.article h2 {
+  color: #1b4f72;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background-color: #1b4f72;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* ✅ Media Query for Tablets (min-width: 600px) */
+@media (min-width: 600px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  nav {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  nav a {
+    border: none;
+    border-right: 1px solid #aed6f1;
+  }
+
+  nav a:last-child {
+    border-right: none;
+  }
+
+  .article {
+    padding: 1.5rem;
+  }
+}
+
+/* ✅ Media Query for Desktops (min-width: 992px) */
+@media (min-width: 992px) {
+  body {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  main {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .article {
+    flex: 1;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  nav a {
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+  }
+}

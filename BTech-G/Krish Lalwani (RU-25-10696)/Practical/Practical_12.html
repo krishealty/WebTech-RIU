@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JavaScript Loops & Conditions - Professional UI</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container {
+        width: 450px;
+        padding: 30px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        color: white;
+        text-align: center;
+        animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .container h2 {
+        margin-bottom: 20px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px;
+        margin: 6px 0;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        background: linear-gradient(135deg, #ff6a00, #ee0979);
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        transform: scale(1.04);
+        box-shadow: 0 0 12px rgba(255,255,255,0.4);
+    }
+
+    #output {
+        margin-top: 20px;
+        padding: 15px;
+        background: rgba(255,255,255,0.25);
+        border-radius: 15px;
+        min-height: 70px;
+        text-align: left;
+        font-size: 15px;
+        animation: fadeIn 0.5s ease;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>JavaScript Loops & Conditions</h2>
+
+    <input type="number" id="userNumber" placeholder="Enter a number">
+
+    <button class="btn" onclick="showCondition()">Show Condition</button>
+    <button class="btn" onclick="showForLoop()">For Loop</button>
+    <button class="btn" onclick="showWhileLoop()">While Loop</button>
+    <button class="btn" onclick="showDoWhileLoop()">Do-While Loop</button>
+
+    <div id="output">Output will appear here...</div>
+</div>
+
+
+<script>
+
+function getNumber() {
+    let num = document.getElementById("userNumber").value;
+    return num === "" ? null : parseInt(num);
+}
+
+function showCondition() {
+    let num = getNumber();
+    if (num === null) {
+        showError();
+        return;
+    }
+
+    let msg = "";
+
+    if (num > 20) {
+        msg = "✔ The number is greater than 20.";
+    } 
+    else if (num > 10) {
+        msg = "✔ The number is greater than 10 but ≤ 20.";
+    } 
+    else {
+        msg = "✔ The number is 10 or less.";
+    }
+
+    display(msg);
+}
+
+function showForLoop() {
+    let num = getNumber();
+    if (num === null) { showError(); return; }
+
+    let text = "🔁 For Loop Result:<br>";
+    for (let i = 1; i <= num; i++) {
+        text += "• " + i + "<br>";
+    }
+    display(text);
+}
+
+function showWhileLoop() {
+    let num = getNumber();
+    if (num === null) { showError(); return; }
+
+    let i = 1;
+    let text = "🔄 While Loop Result:<br>";
+
+    while (i <= num) {
+        text += "• " + i + "<br>";
+        i++;
+    }
+    display(text);
+}
+
+function showDoWhileLoop() {
+    let num = getNumber();
+    if (num === null) { showError(); return; }
+
+    let i = 1;
+    let text = "➡️ Do-While Loop Result:<br>";
+
+    do {
+        text += "• " + i + "<br>";
+        i++;
+    } while (i <= num);
+
+    display(text);
+}
+
+function display(message) {
+    document.getElementById("output").innerHTML = message;
+}
+
+function showError() {
+    display("❌ Please enter a valid number first.");
+}
+
+</script>
+
+</body>
+</html>
